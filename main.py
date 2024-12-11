@@ -1,10 +1,9 @@
 import os
-from random import randint, choice
+from random import randint
 
 import pgzrun
 from pygame import Rect
-from pgzero import music
-from pgzero import tone
+from pgzero import music, tone
 from pgzero.actor import Actor
 from pgzero.keyboard import Keyboard
 from pgzero.screen import Screen
@@ -26,12 +25,6 @@ class Color:
     @staticmethod
     def pastel_random() -> tuple[int, int, int]:
         return (randint(180, 255), randint(180, 255), randint(180, 255))
-
-    @staticmethod
-    def dark_random() -> str:
-        return choice(
-            ("RED", "GREEN", "BLUE", "ORANGE", "BROWN", "PINK", "BLACK", "PURPLE")
-        )
 
 
 class Paddle:
@@ -89,7 +82,7 @@ class Ball:
         )
         self.speed: list[int] = [1, -1]
         self.norm_speed()
-        self.color = Color.dark_random()
+        self.color = Color.pastel_random()
 
     def move(self):
         """Met à jour la position de la balle en fonction de sa vitesse."""
@@ -117,7 +110,7 @@ class Ball:
                 brick.is_destroyed = True
                 self.speed[1] *= -1
                 score += 1
-                self.color = Color.dark_random()
+                self.color = Color.pastel_random()
                 HIT_BRICK.play()
         self.norm_speed()
         return score
