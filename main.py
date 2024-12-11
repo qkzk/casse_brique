@@ -51,6 +51,9 @@ class Paddle:
         elif self.rect.x > self.speed:
             self.rect.x -= self.speed
 
+    def follow_mouse(self, mouse_x: int):
+        game.paddle.rect.x = mouse_x - game.paddle.width // 2
+
     def draw(self):
         """Dessine la raquette sur l'écran."""
         screen.draw.filled_rect(self.rect, "grey")
@@ -241,6 +244,10 @@ def draw():
     screen.fill((100, 100, 100))
     screen.draw.rect(Rect(0, 0, WIDTH, HEIGHT), "BLACK")
     game.draw()
+
+
+def on_mouse_move(pos: tuple[int, int]):
+    game.paddle.follow_mouse(pos[0])
 
 
 pgzrun.go()
