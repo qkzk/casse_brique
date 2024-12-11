@@ -59,10 +59,6 @@ class Brick:
         self.is_destroyed = False
         self.color = Color.pastel_random()
 
-    def destroy(self):
-        """Marque la brique comme détruite."""
-        pass
-
     def draw(self):
         """Dessine la brique sur l'écran si elle n'est pas détruite."""
         if self.is_destroyed:
@@ -80,6 +76,7 @@ class Ball:
             self.radius,
             self.radius,
         )
+        self.abs_speed = 4
         self.speed: list[int] = [1, -1]
         self.norm_speed()
         self.color = Color.pastel_random()
@@ -119,8 +116,8 @@ class Ball:
         if self.speed[0] and abs(self.speed[1] / self.speed[0]) < 0.01:
             self.speed = [0, -1]
         sq_norm = (self.speed[0] ** 2 + self.speed[1] ** 2) ** 0.5
-        self.speed[0] *= 1 / sq_norm * 4
-        self.speed[1] *= 1 / sq_norm * 4
+        self.speed[0] *= 1 / sq_norm * self.abs_speed
+        self.speed[1] *= 1 / sq_norm * self.abs_speed
 
     def draw(self):
         """Dessine la balle sur l'écran."""
