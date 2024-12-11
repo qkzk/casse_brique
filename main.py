@@ -232,6 +232,7 @@ class BreakoutGame:
 
 
 game = BreakoutGame()
+stars = Actor("stars")
 
 
 def update():
@@ -242,6 +243,7 @@ def update():
 def draw():
     """Appelé à chaque frame pour dessiner le jeu."""
     screen.fill((100, 100, 100))
+    stars.draw()
     screen.draw.rect(Rect(0, 0, WIDTH, HEIGHT), "BLACK")
     game.draw()
 

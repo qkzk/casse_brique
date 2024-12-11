@@ -13,4 +13,4 @@ And ?
 
 That's it. It's a very simple game for a very young child.
 
-![img](img/breakout.png)
+![img](screenshot/breakout.png)
